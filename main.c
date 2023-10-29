@@ -16,7 +16,7 @@ typedef struct {
 } Result;
 
 // Result型のファクトリ関数（成功時）
-Result Result_OK(int value) {
+Result Ok(int value) {
     Result result;
     result.code = OK;
     result.value = value;
@@ -24,7 +24,7 @@ Result Result_OK(int value) {
 }
 
 // Result型のファクトリ関数（エラー時）
-Result Result_ERR(ResultCode code) {
+Result Err(ResultCode code) {
     Result result;
     result.code = code;
     return result;
@@ -50,8 +50,8 @@ void printResult(Result result) {
 
 // メイン関数
 int main() {
-    Result result1 = Result_OK(32);     // 成功のResult
-    Result result2 = Result_ERR(ERR_INVALID); // エラーのResult
+    Result result1 = Ok(32);     // 成功のResult
+    Result result2 = Err(ERR_INVALID); // エラーのResult
 
     printResult(result1);
     printResult(result2);
